@@ -1,0 +1,51 @@
+{
+  "fecha": "2026-10-18",
+  "numeroSorteo": 3418,
+  "fuente": "https://cas.gob.ar/juegos/sorteos/resultados?fecha=2026-10-18&juego=quini6",
+  "modalidades": [
+    {
+      "nombre": "Tradicional",
+      "numeros": [
+        7,
+        9,
+        11,
+        17,
+        25,
+        31
+      ]
+    },
+    {
+      "nombre": "La Segunda",
+      "numeros": [
+        4,
+        10,
+        16,
+        21,
+        27,
+        38
+      ]
+    },
+    {
+      "nombre": "Revancha",
+      "numeros": [
+        1,
+        5,
+        26,
+        40,
+        41,
+        43
+      ]
+    },
+    {
+      "nombre": "Siempre Sale",
+      "numeros": [
+        1,
+        10,
+        19,
+        25,
+        37,
+        44
+      ]
+    }
+  ]
+}
