@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b68">
+<title>Mi Quini 6</title>
+<style>
+:root{--navy:#123b68;--blue:#1d65a6;--bg:#f3f6fa;--ink:#182433;--muted:#617083;--line:#dce4ee;--white:#fff;--green:#19764a;--red:#a33b35}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}header{background:var(--navy);color:white;padding:25px 18px}header .wrap,main{max-width:960px;margin:auto}header h1{margin:0;font-size:clamp(1.6rem,5vw,2.2rem)}header p{margin:6px 0 0;color:#e0ebf8}.wrap{max-width:960px;margin:auto}main{padding:20px 14px 48px}.notice{background:#fff8df;border:1px solid #eedb91;border-radius:12px;padding:12px 14px;margin-bottom:18px;font-size:.94rem}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}.tab.active{background:var(--navy);color:white}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #102a4408}.panel h2{font-size:1.25rem;margin:0 0 6px}.muted{color:var(--muted);font-size:.94rem}.numbers{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0}.numbers input{width:100%;min-width:0;text-align:center;font-size:1.15rem;font-weight:700;padding:12px 2px;border:1px solid #bdcbdc;border-radius:10px}.field{display:block;font-weight:650;margin:12px 0 6px}.textinput{width:100%;padding:11px 12px;border:1px solid #bdcbdc;border-radius:10px;font:inherit}.btn{border:0;border-radius:10px;padding:11px 16px;background:var(--blue);color:#fff;font-weight:750;font-size:1rem;cursor:pointer}.btn.secondary{background:#e9f0f8;color:var(--navy)}.btn.danger{background:#f9e9e8;color:var(--red)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.message{padding:11px 13px;border-radius:10px;margin-top:12px;background:#e8f6ed;color:#155d39}.error{background:#fceceb;color:#8b2924}.play{border:1px solid var(--line);border-radius:12px;padding:13px;margin-top:10px}.playhead{display:flex;justify-content:space-between;align-items:center;gap:10px}.balls{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.ball{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#e7f0fb;color:#164d83;font-weight:800;border:1px solid #c7dbf2}.ball.hit{background:#dff4e7;border-color:#83c99d;color:#145e36}.small{font-size:.85rem}.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed #c6d2e0;border-radius:12px}.hidden{display:none!important}footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}button:focus-visible,input:focus-visible{outline:3px solid #79b9f2;outline-offset:2px}@media(max-width:440px){.panel{padding:14px}.numbers{gap:5px}.numbers input{padding:10px 0}.ball{width:34px;height:34px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>🎱 Mi Quini 6</h1><p>Mis jugadas, sorteos y coincidencias en un solo lugar.</p></div></header>
+<main>
+<div class="notice"><strong>Primera versión:</strong> tus jugadas se guardan en este dispositivo. Los resultados se ingresan manualmente; esta versión todavía no consulta automáticamente a Lotería de Santa Fe ni confirma premios oficiales.</div>
+<nav class="tabs" aria-label="Secciones"><button class="tab active" data-tab="plays">Mis jugadas</button><button class="tab" data-tab="check">Controlar sorteo</button></nav>
+<section id="plays">
+<div class="panel"><h2>Agregar una jugada</h2><p class="muted">Escribí un nombre y seis números diferentes del 00 al 45. Podés guardar varias combinaciones.</p>
+<label class="field" for="playName">Nombre de la jugada</label><input id="playName" class="textinput" maxlength="50" placeholder="Ej.: Jugada A">
+<div class="numbers" id="playNumbers"><input aria-label="Número 1" type="number" min="0" max="45" inputmode="numeric" placeholder="01"><input aria-label="Número 2" type="number" min="0" max="45" inputmode="numeric" placeholder="02"><input aria-label="Número 3" type="number" min="0" max="45" inputmode="numeric" placeholder="03"><input aria-label="Número 4" type="number" min="0" max="45" inputmode="numeric" placeholder="04"><input aria-label="Número 5" type="number" min="0" max="45" inputmode="numeric" placeholder="05"><input aria-label="Número 6" type="number" min="0" max="45" inputmode="numeric" placeholder="06"></div>
+<div class="actions"><button class="btn" id="savePlay">Guardar jugada</button><button class="btn secondary" id="fillExample">Cargar ejemplo</button></div><div id="saveMessage" aria-live="polite"></div></div>
+<div class="panel"><h2>Jugadas guardadas</h2><p class="muted">Se mantienen guardadas en este navegador. Si borrás los datos del navegador o cambiás de dispositivo, podrían perderse.</p><div id="playList"></div></div>
+</section>
+<section id="check" class="hidden">
+<div class="panel"><h2>Controlar un sorteo</h2><p class="muted">Ingresá los seis números oficiales de una modalidad/sorteo. La aplicación comparará esos números con todas tus jugadas guardadas.</p>
+<label class="field" for="drawName">Nombre del sorteo o modalidad</label><input id="drawName" class="textinput" placeholder="Ej.: Quini 6 - Tradicional">
+<div class="numbers" id="drawNumbers"><input aria-label="Número sorteado 1" type="number" min="0" max="45" inputmode="numeric" placeholder="01"><input aria-label="Número sorteado 2" type="number" min="0" max="45" inputmode="numeric" placeholder="02"><input aria-label="Número sorteado 3" type="number" min="0" max="45" inputmode="numeric" placeholder="03"><input aria-label="Número sorteado 4" type="number" min="0" max="45" inputmode="numeric" placeholder="04"><input aria-label="Número sorteado 5" type="number" min="0" max="45" inputmode="numeric" placeholder="05"><input aria-label="Número sorteado 6" type="number" min="0" max="45" inputmode="numeric" placeholder="06"></div>
+<div class="actions"><button class="btn" id="checkDraw">Comparar jugadas</button></div><div id="checkMessage" aria-live="polite"></div><div id="checkResults"></div></div>
+</section>
+<footer>Mi Quini 6 · Proyecto personal en desarrollo · No es un sitio oficial de la lotería.</footer>
+</main>
+<script>
+const KEY='mi-quini6-plays-v1';
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+let plays=[];
+try{plays=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(plays))plays=[]}catch(e){plays=[]}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(plays));return true}catch(e){return false}}
+function values(container){return $$(container+' input').map(i=>i.value.trim())}
+function parseNums(raw){if(raw.length!==6||raw.some(x=>x===''))return {error:'Completá los seis números.'};const nums=raw.map(Number);if(nums.some(n=>!Number.isInteger(n)||n<0||n>45))return {error:'Cada número debe ser entero, entre 00 y 45.'};if(new Set(nums).size!==6)return {error:'No repitas números dentro de la misma jugada.'};return {nums:nums.sort((a,b)=>a-b)}}
+function ball(n,hit=false){return '<span class="ball'+(hit?' hit':'')+'">'+String(n).padStart(2,'0')+'</span>'}
+function renderPlays(){const host=$('#playList');if(!plays.length){host.innerHTML='<div class="empty">Todavía no guardaste jugadas. Completá el formulario de arriba para empezar.</div>';return}host.innerHTML=plays.map(p=>'<article class="play"><div class="playhead"><strong>'+escapeHtml(p.name)+'</strong><button class="btn danger small" data-delete="'+p.id+'">Eliminar</button></div><div class="balls">'+p.numbers.map(n=>ball(n)).join('')+'</div><div class="muted small">Guardada en este dispositivo</div></article>').join('');$$('[data-delete]').forEach(b=>b.addEventListener('click',()=>{if(confirm('¿Eliminar esta jugada?')){plays=plays.filter(p=>p.id!==b.dataset.delete);persist();renderPlays()}}))}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('#savePlay').addEventListener('click',()=>{const name=$('#playName').value.trim()||'Mi jugada '+(plays.length+1);const result=parseNums(values('#playNumbers'));const m=$('#saveMessage');if(result.error){m.className='message error';m.textContent=result.error;return}plays.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,numbers:result.nums});const ok=persist();renderPlays();m.className='message';m.textContent=ok?'Jugada guardada correctamente.':'La jugada aparece en pantalla, pero el navegador no permitió guardarla de forma permanente.';$('#playName').value='';$$('#playNumbers input').forEach(i=>i.value='')});
+$('#fillExample').addEventListener('click',()=>{const sample=[1,2,12,17,30,31];$$('#playNumbers input').forEach((i,n)=>i.value=sample[n]);if(!$('#playName').value)$('#playName').value='Jugada de ejemplo'});
+$$('.tab').forEach(b=>b.addEventListener('click',()=>{$$('.tab').forEach(t=>t.classList.toggle('active',t===b));$('#plays').classList.toggle('hidden',b.dataset.tab!=='plays');$('#check').classList.toggle('hidden',b.dataset.tab!=='check')}));
+$('#checkDraw').addEventListener('click',()=>{const result=parseNums(values('#drawNumbers'));const m=$('#checkMessage');const host=$('#checkResults');host.innerHTML='';if(result.error){m.className='message error';m.textContent=result.error;return}if(!plays.length){m.className='message error';m.textContent='Primero guardá al menos una jugada en la pestaña Mis jugadas.';return}m.className='message';m.textContent='Comparación realizada. Esto indica coincidencias numéricas, no confirma que exista un premio.';const draw=result.nums;const label=$('#drawName').value.trim()||'Sorteo ingresado';host.innerHTML='<h3>'+escapeHtml(label)+'</h3><p class="muted">Números ingresados: '+draw.map(n=>String(n).padStart(2,'0')).join(' · ')+'</p>'+plays.map(p=>{const hits=p.numbers.filter(n=>draw.includes(n));return '<article class="play"><strong>'+escapeHtml(p.name)+'</strong><div class="balls">'+p.numbers.map(n=>ball(n,draw.includes(n))).join('')+'</div><strong>'+hits.length+' coincidencia'+(hits.length===1?'':'s')+'</strong><div class="muted small">Los círculos verdes marcan coincidencias.</div></article>'}).join('')});
+renderPlays();
+</script>
+</body>
+</html>
