@@ -1,50 +1,50 @@
 {
-  "fecha": "2026-10-25",
-  "numeroSorteo": 3420,
-  "fuente": "https://www.c5n.com/sociedad/quini-6-los-resultados-del-sorteo-3420-del-domingo-25-octubre-2026-n252538",
+  "fecha": "2026-10-28",
+  "numeroSorteo": 3421,
+  "fuente": "https://cas.gob.ar/juegos/sorteos/resultados?fecha=2026-10-28&juego=quini6",
   "modalidades": [
     {
       "nombre": "Tradicional",
       "numeros": [
-        0,
-        2,
-        3,
-        8,
-        19,
-        39
+        6,
+        25,
+        34,
+        36,
+        38,
+        45
       ]
     },
     {
       "nombre": "La Segunda",
       "numeros": [
-        8,
-        25,
-        30,
-        36,
-        43,
-        45
+        9,
+        19,
+        26,
+        29,
+        33,
+        44
       ]
     },
     {
       "nombre": "Revancha",
       "numeros": [
-        5,
         22,
-        23,
-        29,
-        41,
-        43
+        26,
+        35,
+        42,
+        43,
+        45
       ]
     },
     {
       "nombre": "Siempre Sale",
       "numeros": [
-        0,
-        13,
+        20,
         22,
-        24,
-        40,
-        43
+        26,
+        35,
+        36,
+        37
       ]
     }
   ]
